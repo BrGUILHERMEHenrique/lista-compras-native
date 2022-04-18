@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, View, Button} from 'react-native';
 
+import Header from "../../components/Header";
 import { useAuth } from "../../hooks/authcontext";
 
 const Home = () => {
@@ -16,16 +17,13 @@ const Home = () => {
     };
 
     return(
-    <View>
-        <Text>
-            Home, aqui estamos
-        </Text>
-        <Button
-            title="sair"
-            onPress={ () => logout()}
-        >
-        </Button>
+        <>
+        <Header />
+        <View>
+        
         </View>
+        </>
+
     );    
 
 };
