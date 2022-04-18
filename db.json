@@ -1,0 +1,44 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Guilherme",
+            "email": "guilhermehenriquersouza17@gmail.com",
+            "senha": "senhaSegura",
+            "familia": 1
+        },
+        {
+            "id": 2,
+            "nome": "Carlos",
+            "email": "carlos14@gmail.com",
+            "senha": "senha",
+            "familia": 1
+        }
+    ],
+
+    "familia": [
+        {
+            "id": 1,
+            "nome": "Souza",
+            "lista": 1
+        }
+    ],
+
+    "lista": [
+        {
+            "id": 1,
+            "nome": "Compras mensais"
+        }
+    ],
+
+    "produto": [
+        {
+            "id": 1,
+            "nome": "Café",
+            "preço": 0,
+            "qtd": 1,
+            "comprado": false
+        }
+    ]
+
+}
