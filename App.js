@@ -1,12 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+
+import AppProvider from './src/hooks/index';
+import Routes from './src/routes/router';
+
+
+import api from './src/services/api';
 
 export default function App() {
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="none" />
-    </View>
+    <SafeAreaProvider style={{paddingTop: 24}}>
+      <StatusBar style="dark" backgroundColor="#F0F0F5" />
+      <AppProvider>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </AppProvider>
+    </SafeAreaProvider>
   );
 }
