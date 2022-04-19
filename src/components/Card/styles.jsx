@@ -16,3 +16,9 @@
     font-weight: 200;
     color: black;
  `;
+
+ export const StyledButton = styled.TouchableOpacity`
+   background-color: blue;
+   color: #f3f3f3;
+   
+ `;
