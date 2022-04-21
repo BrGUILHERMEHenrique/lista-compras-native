@@ -9,8 +9,6 @@ import AppProvider from './src/hooks/index';
 import Routes from './src/routes/router';
 
 
-import api from './src/services/api';
-
 export default function App() {
   return (
     <SafeAreaProvider style={{paddingTop: 24}}>

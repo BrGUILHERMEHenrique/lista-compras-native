@@ -1,45 +1,217 @@
 {
-    "usuarios": [
-        {
-            "id": 1,
-            "nome": "Guilherme",
-            "email": "guilhermehenriquersouza17@gmail.com",
-            "senha": "senhaSegura",
-            "familia": 1
-        },
-        {
-            "id": 2,
-            "nome": "Carlos",
-            "email": "carlos14@gmail.com",
-            "senha": "senha",
-            "familia": 1
-        }
-    ],
-
-    "familia": [
-        {
-            "id": 1,
-            "nome": "Souza",
-            "lista": 1
-        }
-    ],
-
-    "lista": [
-        {
-            "id": 1,
-            "nome": "Compras mensais"
-        }
-    ],
-
-    "produto": [
-        {
-            "id": 1,
-            "lista": 1,
-            "nome": "Café",
-            "preço": 0,
-            "qtd": 1,
-            "comprado": false
-        }
-    ]
-
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Guilherme",
+      "email": "guilhermehenriquersouza17@gmail.com",
+      "senha": "senhaSegura",
+      "familia": 1
+    },
+    {
+      "id": 2,
+      "nome": "Carlos",
+      "email": "carlos14@gmail.com",
+      "senha": "senha",
+      "familia": 1
+    }
+  ],
+  "familia": [
+    {
+      "id": 1,
+      "nome": "Souza",
+      "lista": 1
+    }
+  ],
+  "lista": [
+    {
+      "id": 1,
+      "nome": "Compras mensais"
+    }
+  ],
+  "produto": [
+    {
+      "id": 1,
+      "lista": 1,
+      "nome": "Café",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 2,
+      "lista": 1,
+      "nome": "Feijão",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 3,
+      "lista": 1,
+      "nome": "Arroz",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 4,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 5,
+      "lista": 1,
+      "nome": "Queijo",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 6,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 6,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 7,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 8,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 9,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 10,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 11,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 12,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": true
+    },
+    {
+      "id": 13,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 14,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 15,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 16,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 17,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 18,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 19,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 20,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 21,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    },
+    {
+      "id": 22,
+      "lista": 1,
+      "nome": "Paçoca",
+      "preço": 0,
+      "qtd": 1,
+      "comprado": false
+    }
+  ]
 }

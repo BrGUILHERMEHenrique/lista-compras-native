@@ -1,18 +1,20 @@
-import React, { useEfect, useCallback, useState } from "react";
-import {Text, View, Button} from 'react-native';
+import React, { useEffect, useCallback, useState } from "react";
+import { SafeAreaView, ScrollView} from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Header from "../../components/Header";
-import Card from "./../components/Card";
+
+import { CardText, CardView, AddButton, ProdutoInput, Addcontainer} from "./styles";
 
 import { useAuth } from "../../hooks/authcontext";
 import api from "../../services/api";
 
 const Home = () => {
-    const URL = '/produtos?lista=';
-    const URL = '/familia?id=';
+    const URL_PRODUTO = '/produto?lista=';
+    const URL_FAMILIA = '/familia?id=';
     
     const { signOut } = useAuth();
-    const { user } = useState();
+    const { user } = useAuth();
     const [ itens, setItens ] = useState([]);
 
     const logout = async () => {
@@ -23,36 +25,82 @@ const Home = () => {
         } 
     };
 
-    const carregarProdutos = async () => {
+    const URL_UPDATE = '/produto';
+    const comprar = async(id, comprado) => {
         try{
-            const familia = await api.get(URL + user.familia);
-            const response = await api.get(
-                    URL + familia.lista
+            console.log(id, comprado)
+            const response = await api.patch(
+                    URL_UPDATE + `/${id}`,
+                    { comprado:  !comprado}
                 );
-            console.log(response.data);
-
-            setItens(response.data);
+                console.log(response.data);
+                carregarProdutos();
         }catch(e){
             console.log(e);
         }
     };
 
-    useEfect(() => {
+    const carregarProdutos = async () => {
+        try{
+            const familia = await api.get(URL_FAMILIA + user.familia);
+
+            if(!!familia){
+                console.log(familia.data[0]);
+                const response = await api.get(
+                    URL_PRODUTO + familia.data[0].lista
+                    );
+                console.log(familia.data);
+                console.log(response.data);
+
+
+                setItens(response.data);
+            }
+        }catch(e){
+            console.log(e);
+        }
+
+    };
+
+    useEffect(() => {
         carregarProdutos();
     }, [])
 
     return(
         <>
         <Header />
-        <View>
-            {
-                itens.Length <= 0 ? 'Nada aqui por enquanto' : itens.map(item => 
-                        return(
-                                <Card id={item.id} nome={item.nome} qtd={item.qtd} comprado={item.comprado}>
-                            )
-                    )
-            }    
-        </View>
+
+        <SafeAreaView style={{ flex: 1, padding: 10, marginTop: 10 }}>
+            <ScrollView>
+                {
+                    itens.map(item => (
+                        <CardView>
+                            <CardText>Produto: { item.nome }</CardText>
+                            <CardText>Quantidade: { item.qtd }</CardText>
+
+                            { item.comprado ? (
+                                    <>
+                                    <MaterialCommunityIcons 
+                                        name="check-circle-outline"
+                                        color="#208a0a"
+                                        size={22}
+                                        onPress={() => comprar(item.id, item.comprado)}
+                                    />
+                                    </>
+                                ) : (
+                                    <MaterialCommunityIcons 
+                                    name="circle-outline"
+                                    color="#3a3a3a"
+                                    size={22}
+                                    onPress={() => comprar(item.id, item.comprado)}
+                                    />
+                                )}
+                        </CardView>
+                                )
+                        )
+                }  
+                
+            </ScrollView>
+        </SafeAreaView>
         </>
 
     );    
