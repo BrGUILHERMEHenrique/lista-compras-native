@@ -1,5 +1,48 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.View`
+  flex: 1;
+  padding: 15px;
+`;
+
+export const Input = styled.TextInput`
+  flex: 1;
+  height: 40px;
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 5px;
+`;
+
+export const InputQtd = styled.TextInput`
+  flex: 1;
+  height: 40px;
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+`;
+
+export const Button = styled.TouchableOpacity`
+  flex: 1;
+  height: 40px;
+  background-color: #23a109;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+`;
+
+export const ButtonText = styled.Text`
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const FormAddNewTask = styled.View`
+  flex-direction: row;
+  margin-bottom: 15px;
+`;
+
 
 export const CardView = styled.View`
   

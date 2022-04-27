@@ -59,7 +59,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 5,
@@ -99,7 +99,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 9,
@@ -123,7 +123,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 12,
@@ -131,7 +131,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 13,
@@ -211,7 +211,47 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": false
+      "comprado": true
+    },
+    {
+      "lista": 1,
+      "nome": "milho",
+      "preço": 0,
+      "qtd": "1",
+      "comprado": false,
+      "id": 23
+    },
+    {
+      "lista": 1,
+      "nome": "Pipoca",
+      "preço": 0,
+      "qtd": "2",
+      "comprado": false,
+      "id": 24
+    },
+    {
+      "lista": 1,
+      "nome": "Pipoca",
+      "preço": 0,
+      "qtd": "3",
+      "comprado": false,
+      "id": 25
+    },
+    {
+      "lista": 1,
+      "nome": "milho",
+      "preço": 0,
+      "qtd": "1",
+      "comprado": false,
+      "id": 26
+    },
+    {
+      "lista": 1,
+      "nome": "Macarrão",
+      "preço": 0,
+      "qtd": "2",
+      "comprado": false,
+      "id": 27
     }
   ]
 }
