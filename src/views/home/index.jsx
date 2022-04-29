@@ -1,10 +1,11 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { SafeAreaView, ScrollView} from 'react-native';
+import { SafeAreaView, ScrollView, Text, Alert} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Modal from 'react-native-modal';
 
 import Header from "../../components/Header";
 
-import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Input, InputQtd} from "./styles";
+import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco} from "./styles";
 
 import { useAuth } from "../../hooks/authcontext";
 import api from "../../services/api";
@@ -19,21 +20,35 @@ const Home = () => {
     const [ itens, setItens ] = useState([]);
     const [ produto, setNovoProduto ] = useState('');
     const [ qtd, setNewQtd ] = useState(0);
+    const [ preco, setPreco ] = useState(0);
+    const [ modalVisivel, setModalVisivel ] = useState(false);
 
     const URL_UPDATE = '/produto';
     const comprar = async(id, comprado) => {
+
+        if(!comprado){
+            toggleModal();
+        }
+
+    
         try{
-            console.log(id, comprado)
             const response = await api.patch(
                     URL_UPDATE + `/${id}`,
-                    { comprado:  !comprado}
+                    {
+                        comprado:  !comprado,
+                        preço: preco
+                    }
                 );
-                console.log(response.data);
+                setPreco(0);
                 carregarProdutos();
         }catch(e){
             console.log(e);
         }
     };
+
+   const toggleModal = () => {
+    setModalVisivel(!modalVisivel);
+   };
 
     const carregarProdutos = async () => {
         try{
@@ -44,9 +59,6 @@ const Home = () => {
                 const response = await api.get(
                     URL_PRODUTO + familia.data[0].lista
                     );
-                console.log(familia.data);
-                console.log(response.data);
-
 
                 setItens(response.data);
             }
@@ -85,7 +97,30 @@ const Home = () => {
     return(
         <>
         <Header />
+        <Modal
+            isVisible={modalVisivel}
+            animationInTiming={2000}
+            animationOutTiming={2000}
+            backdropTransitionInTiming={2000}
+            backdropTransitionOutTiming={2000}
+            > 
+            <ModalContainer>             
+            <Text>Adicionar preço do produto</Text>
+                <InputPreco
+                    value={preco}
+                    onChangeText={text => setPreco(Number(text))} 
+                    keyboardType='numeric'
+                    placeholder='Preço'
+                />
+                <ButtonModal title="Hide modal" 
+                onPressOut={toggleModal}
+                onPress={toggleModal} >
+                    <ButtonText>Adicionar</ButtonText>
+                    </ButtonModal>
+            </ModalContainer>  
+            </Modal>
         <Container>
+             
         <FormAddNewTask>
             <Input 
                 value={produto}

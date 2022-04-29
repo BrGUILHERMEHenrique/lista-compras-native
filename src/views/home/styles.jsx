@@ -5,8 +5,23 @@ export const Container = styled.View`
   padding: 15px;
 `;
 
+export const ModalContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
 export const Input = styled.TextInput`
   flex: 1;
+  height: 40px;
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 5px;
+`;
+
+export const InputPreco = styled.TextInput`
+  width: 60%;
   height: 40px;
   background-color: #fff;
   padding: 0 20px;
@@ -20,6 +35,14 @@ export const InputQtd = styled.TextInput`
   padding: 0 20px;
   border-radius: 5px;
   margin-left: 10px;
+`;
+export const ButtonModal = styled.TouchableOpacity`
+  width: 60%;
+  height: 40px;
+  background-color: #23a109;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Button = styled.TouchableOpacity`
