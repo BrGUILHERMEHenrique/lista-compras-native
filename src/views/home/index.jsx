@@ -5,16 +5,16 @@ import Modal from 'react-native-modal';
 
 import Header from "../../components/Header";
 
-import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco} from "./styles";
+import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco, ButtonFooter} from "./styles";
 
 import { useAuth } from "../../hooks/authcontext";
 import api from "../../services/api";
+import Calculos from '../../services/calculos';
 
 const Home = () => {
     const URL_PRODUTO = '/produto?lista=';
     const URL_FAMILIA = '/familia?id=';
     
-    const { signOut } = useAuth();
     const { user } = useAuth();
     const [ fam, setFamilia ] = useState({});
     const [ itens, setItens ] = useState([]);
@@ -22,16 +22,17 @@ const Home = () => {
     const [ qtd, setNewQtd ] = useState(0);
     const [ preco, setPreco ] = useState(0);
     const [ modalVisivel, setModalVisivel ] = useState(false);
+    const [ item, setItem ] = useState({});
+    const calculos = new Calculos(); 
 
     const URL_UPDATE = '/produto';
-    const comprar = async(id, comprado) => {
+    const comprar = async(id, comprado, qtd) => {
 
-        if(!comprado){
-            toggleModal();
-        }
+        calculos.somaValor(preco, qtd);
+        setPreco(calculos.multiplicaValorDoItem(preco, qtd));
 
-    
         try{
+
             const response = await api.patch(
                     URL_UPDATE + `/${id}`,
                     {
@@ -39,6 +40,7 @@ const Home = () => {
                         preço: preco
                     }
                 );
+
                 setPreco(0);
                 carregarProdutos();
         }catch(e){
@@ -47,7 +49,10 @@ const Home = () => {
     };
 
    const toggleModal = () => {
-    setModalVisivel(!modalVisivel);
+        setModalVisivel(!modalVisivel);
+        if (preco <= 0 && !item.comprado) return;
+
+        comprar(item.id, item.comprado, item.qtd);
    };
 
     const carregarProdutos = async () => {
@@ -112,7 +117,7 @@ const Home = () => {
                     keyboardType='numeric'
                     placeholder='Preço'
                 />
-                <ButtonModal title="Hide modal" 
+                <ButtonModal title="Adicionar" 
                 onPressOut={toggleModal}
                 onPress={toggleModal} >
                     <ButtonText>Adicionar</ButtonText>
@@ -154,7 +159,10 @@ const Home = () => {
                                         name="check-circle-outline"
                                         color="#208a0a"
                                         size={30}
-                                        onPress={() => comprar(item.id, item.comprado)}
+                                        onPress={() => { 
+                                            setItem(item);
+                                            comprar(item.id, item.comprado, item.qtd);
+                                        }}
                                     />
                                     </>
                                 ) : (
@@ -162,7 +170,11 @@ const Home = () => {
                                     name="circle-outline"
                                     color="#3a3a3a"
                                     size={30}
-                                    onPress={() => comprar(item.id, item.comprado)}
+                                    onPress={() =>{
+                                        setItem(item); 
+                                        if(!item.comprado){
+                                            toggleModal();}     
+                                    }}
                                     />
                                 )}
                         </CardView>
@@ -172,6 +184,19 @@ const Home = () => {
                 
             </ScrollView>
         </SafeAreaView>
+        <ButtonFooter mostrar={
+            () => {
+                if (!itens.find(item => item.comprado == true)) {
+                    console.log('tem comprado');
+                    return true;
+                } else{
+                    console.log('não tem nada comprado');
+                    return false;
+                }
+            }
+        }>
+            <ButtonText>Finalizar Compra</ButtonText>
+        </ButtonFooter>
         </Container>
         </>
 

@@ -55,6 +55,15 @@ export const Button = styled.TouchableOpacity`
   margin-left: 10px;
 `;
 
+export const ButtonFooter = styled.TouchableOpacity`
+  display: ${props => props.mostrar ? 'flex' : 'none'};
+  height: 40px;
+  background-color: #23a109;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ButtonText = styled.Text`
   color: #fff;
   font-size: 18px;

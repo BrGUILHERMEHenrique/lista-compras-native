@@ -33,7 +33,7 @@
       "id": 1,
       "lista": 1,
       "nome": "Café",
-      "preço": 0,
+      "preço": 3,
       "qtd": 1,
       "comprado": true
     },
@@ -43,7 +43,7 @@
       "nome": "Feijão",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 3,
@@ -51,7 +51,7 @@
       "nome": "Arroz",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 4,
@@ -59,7 +59,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 5,
@@ -67,7 +67,7 @@
       "nome": "Queijo",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 6,
@@ -75,7 +75,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 6,
@@ -91,7 +91,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 8,
@@ -99,7 +99,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 9,
@@ -107,7 +107,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 10,
@@ -115,7 +115,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 11,
@@ -123,7 +123,7 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "id": 12,
@@ -169,9 +169,9 @@
       "id": 17,
       "lista": 1,
       "nome": "Paçoca",
-      "preço": 0,
+      "preço": 2,
       "qtd": 1,
-      "comprado": false
+      "comprado": true
     },
     {
       "id": 18,
@@ -211,14 +211,14 @@
       "nome": "Paçoca",
       "preço": 0,
       "qtd": 1,
-      "comprado": true
+      "comprado": false
     },
     {
       "lista": 1,
       "nome": "milho",
       "preço": 0,
       "qtd": "1",
-      "comprado": true,
+      "comprado": false,
       "id": 23
     },
     {
