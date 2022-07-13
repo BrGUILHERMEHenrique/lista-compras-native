@@ -10,6 +10,7 @@ import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Inpu
 import { useAuth } from "../../hooks/authcontext";
 import api from "../../services/api";
 import Calculos from '../../services/calculos';
+import AwesomeAlert from "react-native-awesome-alerts";
 
 const Home = () => {
     const URL_PRODUTO = '/produto?lista=';
@@ -23,6 +24,7 @@ const Home = () => {
     const [ preco, setPreco ] = useState(0);
     const [ modalVisivel, setModalVisivel ] = useState(false);
     const [ item, setItem ] = useState({});
+    const [ showAlert, setShowalert ] = useState(false);
     const calculos = new Calculos(); 
 
     const URL_UPDATE = '/produto';
@@ -93,6 +95,36 @@ const Home = () => {
         } catch(e){
             console.log(e);
         }
+    };
+
+   const  mostrar = () => {
+            if (!itens.find(item => item.comprado == true)) {
+                console.log('tem comprado');
+                return true;
+            } else{
+                console.log('não tem nada comprado');
+                return false;
+            }
+        };
+
+    const excluirItem = async (itemId) => {
+        try {
+            await api.delete(`/produto/${itemId}`);
+            carregarProdutos();
+        } catch (error) {
+            console.log(error.message);    
+        }
+    }
+
+    const finalizarCompras = async() => {
+        try {
+            let itemsNaoComprados = itens.filter(item => item.comprado == false);
+            if(itemsNaoComprados.length > 0){
+               setShowalert(!showAlert);
+            }    
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
@@ -104,10 +136,10 @@ const Home = () => {
         <Header />
         <Modal
             isVisible={modalVisivel}
-            animationInTiming={2000}
-            animationOutTiming={2000}
-            backdropTransitionInTiming={2000}
-            backdropTransitionOutTiming={2000}
+            animationInTiming={1500}
+            animationOutTiming={1500}
+            backdropTransitionInTiming={1500}
+            backdropTransitionOutTiming={1500}
             > 
             <ModalContainer>             
             <Text>Adicionar preço do produto</Text>
@@ -144,6 +176,16 @@ const Home = () => {
               Criar
           </ButtonText>
         </Button>
+        <AwesomeAlert 
+            show={showAlert}
+            message='Ainda exsitem items não comprados, deseja finalizar ?'
+            showCancelButton={true}
+            showConfirmButton={true}
+            closeOnTouchOutside={true}
+            closeOnHardwareBackPress={true}
+            onCancelPressed={() => setShowalert(false)}
+            // onConfirmPressed=
+        />
       </FormAddNewTask>
         <SafeAreaView style={{flex: 1}}>
             <ScrollView>
@@ -152,6 +194,14 @@ const Home = () => {
                         <CardView>
                             <CardText>{ item.nome }</CardText>
                             <CardText>Qtd: { item.qtd }</CardText>
+                            <MaterialCommunityIcons 
+                                        name="delete-outline"
+                                        color="#860718"
+                                        size={30}
+                                        onPress={async () => {
+                                            await excluirItem(item.id)
+                                        }}
+                                    />
 
                             { item.comprado ? (
                                     <>
@@ -176,7 +226,7 @@ const Home = () => {
                                             toggleModal();}     
                                     }}
                                     />
-                                )}
+                                    )}       
                         </CardView>
                                 )
                         )
@@ -184,17 +234,9 @@ const Home = () => {
                 
             </ScrollView>
         </SafeAreaView>
-        <ButtonFooter mostrar={
-            () => {
-                if (!itens.find(item => item.comprado == true)) {
-                    console.log('tem comprado');
-                    return true;
-                } else{
-                    console.log('não tem nada comprado');
-                    return false;
-                }
-            }
-        }>
+        <ButtonFooter disable={mostrar()} onPress={async() => {
+            await finalizarCompras()
+        }}>
             <ButtonText>Finalizar Compra</ButtonText>
         </ButtonFooter>
         </Container>

@@ -30,183 +30,7 @@
   ],
   "produto": [
     {
-      "id": 1,
-      "lista": 1,
-      "nome": "Café",
-      "preço": 3,
-      "qtd": 1,
-      "comprado": true
-    },
-    {
-      "id": 2,
-      "lista": 1,
-      "nome": "Feijão",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 3,
-      "lista": 1,
-      "nome": "Arroz",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 4,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 5,
-      "lista": 1,
-      "nome": "Queijo",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
       "id": 6,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 6,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 7,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 8,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 9,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 10,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 11,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 12,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 13,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 14,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 15,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 16,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 17,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 2,
-      "qtd": 1,
-      "comprado": true
-    },
-    {
-      "id": 18,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 19,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 20,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 21,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
-      "id": 22,
       "lista": 1,
       "nome": "Paçoca",
       "preço": 0,
@@ -223,7 +47,7 @@
     },
     {
       "lista": 1,
-      "nome": "Pipoca",
+      "nome": "Macarrão",
       "preço": 0,
       "qtd": "2",
       "comprado": false,
@@ -231,27 +55,11 @@
     },
     {
       "lista": 1,
-      "nome": "Pipoca",
+      "nome": "Arroz",
       "preço": 0,
-      "qtd": "3",
+      "qtd": "10",
       "comprado": false,
       "id": 25
-    },
-    {
-      "lista": 1,
-      "nome": "milho",
-      "preço": 0,
-      "qtd": "1",
-      "comprado": false,
-      "id": 26
-    },
-    {
-      "lista": 1,
-      "nome": "Macarrão",
-      "preço": 0,
-      "qtd": "2",
-      "comprado": false,
-      "id": 27
     }
   ]
 }

@@ -56,7 +56,6 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ButtonFooter = styled.TouchableOpacity`
-  display: ${props => props.mostrar ? 'flex' : 'none'};
   height: 40px;
   background-color: #23a109;
   border-radius: 5px;
