@@ -117,7 +117,7 @@ const Home = () => {
         }
     }
 
-    const finalizarCompras = async() => {
+    const iniciarFinalizacaoDasCompras = async() => {
         try {
             let itemsNaoComprados = itens.filter(item => item.comprado == false);
             if(itemsNaoComprados.length > 0){
@@ -125,6 +125,15 @@ const Home = () => {
             }    
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    const finalizarCompras = async() => {
+        try{
+            const response = await api.post(`/familia/finalizarCompras/${fam.lista}`);
+            carregarProdutos();
+        } catch(e){
+            console.log(e);
         }
     }
 
@@ -185,7 +194,7 @@ const Home = () => {
             closeOnTouchOutside={true}
             closeOnHardwareBackPress={true}
             onCancelPressed={() => setShowalert(false)}
-            // onConfirmPressed=
+            onConfirmPressed={() => finalizarCompras()}
         />
       </FormAddNewTask>
         <SafeAreaView style={{flex: 1}}>
@@ -238,7 +247,7 @@ const Home = () => {
             </ScrollView>
         </SafeAreaView>
         <ButtonFooter disable={mostrar()} onPress={async() => {
-            await finalizarCompras()
+            await iniciarFinalizacaoDasCompras();
         }}>
             <ButtonText>Finalizar Compra</ButtonText>
         </ButtonFooter>
