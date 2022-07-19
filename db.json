@@ -30,14 +30,6 @@
   ],
   "produto": [
     {
-      "id": 6,
-      "lista": 1,
-      "nome": "Paçoca",
-      "preço": 0,
-      "qtd": 1,
-      "comprado": false
-    },
-    {
       "lista": 1,
       "nome": "milho",
       "preço": 0,

@@ -5,7 +5,8 @@ import Modal from 'react-native-modal';
 
 import Header from "../../components/Header";
 
-import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco, ButtonFooter} from "./styles";
+import { CardText, CardView, Container, Button, ButtonText, 
+    FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco, ButtonFooter, ContainerOptions} from "./styles";
 
 import { useAuth } from "../../hooks/authcontext";
 import api from "../../services/api";
@@ -194,6 +195,7 @@ const Home = () => {
                         <CardView>
                             <CardText>{ item.nome }</CardText>
                             <CardText>Qtd: { item.qtd }</CardText>
+                            <ContainerOptions>
                             <MaterialCommunityIcons 
                                         name="delete-outline"
                                         color="#860718"
@@ -226,7 +228,8 @@ const Home = () => {
                                             toggleModal();}     
                                     }}
                                     />
-                                    )}       
+                                    )}
+                            </ ContainerOptions>      
                         </CardView>
                                 )
                         )
