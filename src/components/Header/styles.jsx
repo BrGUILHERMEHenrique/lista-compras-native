@@ -5,9 +5,7 @@ export const Container = styled.View`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 30px
+    padding: 15px
 `;
 
 export const NameText = styled.Text`

@@ -52,6 +52,22 @@
       "qtd": "10",
       "comprado": false,
       "id": 25
+    },
+    {
+      "lista": 1,
+      "nome": "Feijão",
+      "preço": 4.1,
+      "qtd": "1kg",
+      "comprado": true,
+      "id": 26
+    },
+    {
+      "lista": 1,
+      "nome": "óleo",
+      "preço": 1.25,
+      "qtd": "10 vid",
+      "comprado": true,
+      "id": 27
     }
   ]
 }

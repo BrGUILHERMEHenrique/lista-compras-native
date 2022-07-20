@@ -1,6 +1,7 @@
 import React, { useCallback, useEfect, useState } from 'react';
 
 import { Container, NameText, LogoutButton } from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useAuth } from '../../hooks/authcontext';
 
@@ -15,14 +16,12 @@ const Header = () => {
                 Bem vindo, { user.nome }.
             </NameText>
 
-            <LogoutButton
+            <MaterialCommunityIcons 
+                name="logout-variant" 
+                size={24} color="black" 
                 onPress={async () => await signOut()}
                 Title='Sair'
-            >
-                <NameText>
-                    Sair
-                </NameText>
-            </LogoutButton>
+            />
         </Container>
     )
 };

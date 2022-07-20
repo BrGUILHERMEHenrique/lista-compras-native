@@ -217,7 +217,7 @@ const Home = () => {
                             { item.comprado ? (
                                     <>
                                     <MaterialCommunityIcons 
-                                        name="check-circle-outline"
+                                        name="checkbox-marked-outline"
                                         color="#208a0a"
                                         size={30}
                                         onPress={() => { 
@@ -228,7 +228,7 @@ const Home = () => {
                                     </>
                                 ) : (
                                     <MaterialCommunityIcons 
-                                    name="circle-outline"
+                                    name="checkbox-blank-outline"
                                     color="#3a3a3a"
                                     size={30}
                                     onPress={() =>{
@@ -246,7 +246,7 @@ const Home = () => {
                 
             </ScrollView>
         </SafeAreaView>
-        <ButtonFooter disable={mostrar()} onPress={async() => {
+        <ButtonFooter visible={false} onPress={async() => {
             await iniciarFinalizacaoDasCompras();
         }}>
             <ButtonText>Finalizar Compra</ButtonText>

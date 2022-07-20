@@ -1,17 +1,28 @@
 import React from 'react';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Home from '../views/home/index';
 
-const Auth = createStackNavigator();
+const App = createBottomTabNavigator();
 
 const AppRoutes = () => (
-    <Auth.Navigator screenOptions={{
+    <App.Navigator screenOptions={{
         headerShown: false
       }}>
-        <Auth.Screen name="home" component={Home} />
-      </Auth.Navigator>
+        <App.Screen name="Lista" 
+        component={Home} 
+        options={{
+            tabBarIcon: () => (
+                <MaterialCommunityIcons 
+                    name="clipboard-list-outline"
+                    color="#000"
+                    size={30}
+                />
+                )
+        }}/>
+      </App.Navigator>
 );
 
 export default AppRoutes;
