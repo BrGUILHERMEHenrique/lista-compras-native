@@ -10,8 +10,8 @@ import React,
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 
-// const URL = '/login';
-const URL = '/usuarios';
+const URL_LOGIN = '/login';
+const URL_PADRAO = '/usuario';
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
@@ -32,17 +32,21 @@ const AuthProvider = ({ children }) => {
 
     const signIn = useCallback(async ({ email, senha }) => {
         try {
-            //Temporario para testes
-            const response = await api.get(URL);
-
-            let user = response.data.filter(data => {
-                return(data.email == email && data.senha == senha);
+            const response = await api.post(URL_PADRAO+URL_LOGIN, {
+                email,
+                senha
             });
 
+            console.log(response.headers);
 
-            if(user.length > 0){
-                await AsyncStorage.setItem('@Lista:user', JSON.stringify(user[0]));
-                setData({ user: user[0] });
+            let user = response.data;
+            let header = 'Bearer ' + response.headers.token;
+            console.log('token: ', header);
+
+            if(user){
+                await AsyncStorage.setItem('@Lista:user', JSON.stringify(user));
+                setData({ user });
+                await AsyncStorage.setItem('@Lista:token', JSON.stringfy(header));
             }
 
         } catch (e) {

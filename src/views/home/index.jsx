@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import { SafeAreaView, ScrollView, Text, Alert} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Header from "../../components/Header";
 
@@ -25,9 +26,20 @@ const Home = () => {
     const [ modalVisivel, setModalVisivel ] = useState(false);
     const [ item, setItem ] = useState({});
     const [ showAlert, setShowalert ] = useState(false);
+    const [ token, setToken ] = useState('');
     const calculos = new Calculos(); 
+    const configAxios = {headers:{
+                        'Auth': token
+                    }};
 
     const URL_UPDATE = '/produto';
+
+    const loadToken = async () => {
+        const token = await AsyncStorage.getItem('@Lista:token');
+        if(token){
+            setToken(token);
+        }
+    }
     const comprar = async(id, comprado, qtd) => {
 
         calculos.somaValor(preco, qtd);
@@ -58,13 +70,13 @@ const Home = () => {
    };
 
     const carregarProdutos = async () => {
-        try{
-            const familia = await api.get(URL_FAMILIA + user.familia);
-
+        try{ 
+            const familia = user.familia;
             if(!!familia){
-                setFamilia(familia.data[0]);
+                setFamilia(familia);
                 const response = await api.get(
-                    URL_PRODUTO + familia.data[0].lista
+                    URL_PRODUTO + familia.lista,
+                    configAxios
                     );
 
                 setItens(response.data);
@@ -87,7 +99,7 @@ const Home = () => {
             comprado: false
         }
         try{
-            const response = await api.post('/produto', prod);
+            const response = await api.post('/produto', prod, configAxios);
             console.log(response.data);
             carregarProdutos();
             setNewQtd(0);
@@ -109,7 +121,7 @@ const Home = () => {
 
     const excluirItem = async (itemId) => {
         try {
-            await api.delete(`/produto/${itemId}`);
+            await api.delete(`/produto/${itemId}`, configAxios);
             carregarProdutos();
         } catch (error) {
             console.log(error.message);    
@@ -127,7 +139,8 @@ const Home = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect(async () => {
+        await loadToken();
         carregarProdutos();
     }, [])
 
