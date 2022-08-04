@@ -1,9 +1,13 @@
 class Calculos {
     valor = 0;
+    qtdCalculo = 0;
 
     multiplicaValorDoItem(valor, qtd){
-        if (qtd > 1){
-            return (valor * qtd);
+        this.qtdCalculo = parseInt(qtd.replace(/[^0-9]/g, ""));
+
+        if (this.qtdCalculo > 1){
+            console.log(parseInt(valor));
+            return (parseInt(valor) * this.qtdCalculo);
         } else {
             return valor;
         }

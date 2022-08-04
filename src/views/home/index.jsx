@@ -6,7 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Header from "../../components/Header";
 
-import { CardText, CardView, Container, Button, ButtonText, FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco, ButtonFooter} from "./styles";
+import { CardText, CardView, Container, Button, ButtonText, 
+    FormAddNewTask, Input, InputQtd, ModalContainer, ButtonModal, InputPreco, ButtonFooter, ContainerOptions} from "./styles";
 
 import { useAuth } from "../../hooks/authcontext";
 import api from "../../services/api";
@@ -128,7 +129,7 @@ const Home = () => {
         }
     }
 
-    const finalizarCompras = async() => {
+    const iniciarFinalizacaoDasCompras = async() => {
         try {
             let itemsNaoComprados = itens.filter(item => item.comprado == false);
             if(itemsNaoComprados.length > 0){
@@ -136,6 +137,15 @@ const Home = () => {
             }    
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    const finalizarCompras = async() => {
+        try{
+            const response = await api.post(`/familia/finalizarCompras/${fam.lista}`);
+            carregarProdutos();
+        } catch(e){
+            console.log(e);
         }
     }
 
@@ -197,7 +207,7 @@ const Home = () => {
             closeOnTouchOutside={true}
             closeOnHardwareBackPress={true}
             onCancelPressed={() => setShowalert(false)}
-            // onConfirmPressed=
+            onConfirmPressed={() => finalizarCompras()}
         />
       </FormAddNewTask>
         <SafeAreaView style={{flex: 1}}>
@@ -207,6 +217,7 @@ const Home = () => {
                         <CardView>
                             <CardText>{ item.nome }</CardText>
                             <CardText>Qtd: { item.qtd }</CardText>
+                            <ContainerOptions>
                             <MaterialCommunityIcons 
                                         name="delete-outline"
                                         color="#860718"
@@ -219,7 +230,7 @@ const Home = () => {
                             { item.comprado ? (
                                     <>
                                     <MaterialCommunityIcons 
-                                        name="check-circle-outline"
+                                        name="checkbox-marked-outline"
                                         color="#208a0a"
                                         size={30}
                                         onPress={() => { 
@@ -230,7 +241,7 @@ const Home = () => {
                                     </>
                                 ) : (
                                     <MaterialCommunityIcons 
-                                    name="circle-outline"
+                                    name="checkbox-blank-outline"
                                     color="#3a3a3a"
                                     size={30}
                                     onPress={() =>{
@@ -239,7 +250,8 @@ const Home = () => {
                                             toggleModal();}     
                                     }}
                                     />
-                                    )}       
+                                    )}
+                            </ ContainerOptions>      
                         </CardView>
                                 )
                         )
@@ -247,8 +259,8 @@ const Home = () => {
                 
             </ScrollView>
         </SafeAreaView>
-        <ButtonFooter disable={mostrar()} onPress={async() => {
-            await finalizarCompras()
+        <ButtonFooter visible={false} onPress={async() => {
+            await iniciarFinalizacaoDasCompras();
         }}>
             <ButtonText>Finalizar Compra</ButtonText>
         </ButtonFooter>

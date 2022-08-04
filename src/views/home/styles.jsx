@@ -5,6 +5,12 @@ export const Container = styled.View`
   padding: 15px;
 `;
 
+export const ContainerOptions = styled.View`
+  flex-direction: row;
+  padding: 0;
+  justify-content: space-evenly;
+  align-items center;
+`;
 export const ModalContainer = styled.View`
   flex: 1;
   flex-direction: column;
@@ -39,7 +45,7 @@ export const InputQtd = styled.TextInput`
 export const ButtonModal = styled.TouchableOpacity`
   width: 60%;
   height: 40px;
-  background-color: #23a109;
+  background-color: #5AE;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
@@ -48,7 +54,7 @@ export const ButtonModal = styled.TouchableOpacity`
 export const Button = styled.TouchableOpacity`
   flex: 1;
   height: 40px;
-  background-color: #23a109;
+  background-color: #5AE;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
@@ -57,7 +63,7 @@ export const Button = styled.TouchableOpacity`
 
 export const ButtonFooter = styled.TouchableOpacity`
   height: 40px;
-  background-color: #23a109;
+  background-color: #5AE;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
