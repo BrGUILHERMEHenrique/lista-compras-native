@@ -15,7 +15,7 @@ import Calculos from '../../services/calculos';
 import AwesomeAlert from "react-native-awesome-alerts";
 
 const Home = () => {
-    const URL_PRODUTO = '/produto?lista=';
+    const URL_PRODUTO = '/item/porLista/';
     const URL_FAMILIA = '/familia?id=';
     
     const { user } = useAuth();
@@ -29,14 +29,17 @@ const Home = () => {
     const [ showAlert, setShowalert ] = useState(false);
     const [ token, setToken ] = useState('');
     const calculos = new Calculos(); 
-    const configAxios = {headers:{
-                        'Auth': token
-                    }};
+    var configAxios = {};
 
-    const URL_UPDATE = '/produto';
+    const URL_UPDATE = '/item';
 
     const loadToken = async () => {
+        console.log('antes de carregar');
         const token = await AsyncStorage.getItem('@Lista:token');
+        console.log('token aqui na parada: ', token);
+        configAxios = {headers:{
+                        'Authorization': token
+                    }};
         if(token){
             setToken(token);
         }
@@ -76,14 +79,16 @@ const Home = () => {
             if(!!familia){
                 setFamilia(familia);
                 const response = await api.get(
-                    URL_PRODUTO + familia.lista,
-                    configAxios
+                    URL_PRODUTO + familia.lista.id,
+                    {headers:{
+                        'Authorization': token
+                    }}
                     );
 
                 setItens(response.data);
             }
         }catch(e){
-            console.log(e);
+            console.log('error: ', e);
         }
 
     };
@@ -100,7 +105,10 @@ const Home = () => {
             comprado: false
         }
         try{
-            const response = await api.post('/produto', prod, configAxios);
+            console.log('config axios: ', configAxios);
+            const response = await api.post('/item/cadastrar', prod, {headers:{
+                        'Authorization': token
+                    }});
             console.log(response.data);
             carregarProdutos();
             setNewQtd(0);

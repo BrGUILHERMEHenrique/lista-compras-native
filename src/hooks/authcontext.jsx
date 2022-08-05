@@ -46,7 +46,8 @@ const AuthProvider = ({ children }) => {
             if(user){
                 await AsyncStorage.setItem('@Lista:user', JSON.stringify(user));
                 setData({ user });
-                await AsyncStorage.setItem('@Lista:token', JSON.stringfy(header));
+                console.log(header);
+                await AsyncStorage.setItem('@Lista:token', header);
             }
 
         } catch (e) {
