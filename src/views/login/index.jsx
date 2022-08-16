@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
+import { Link } from '@react-navigation/native';
 
 import { useAuth } from '../../hooks/authcontext';
 
@@ -43,6 +44,10 @@ const login = () => {
                     Login
                 </ButtonText>
             </Button>
+            <Link
+                to={{ screen:'cadastro' }}
+            > Novo cadastro</Link>
+
         </Container>
         
     );
