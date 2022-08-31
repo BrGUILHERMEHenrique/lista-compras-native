@@ -1,11 +1,13 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import {Container, Button, ButtonText, Input} from './styles';
 
 import api from '../../services/api';
 
-const cadastro = () => {
+const cadastro = ({ navigation }) => {
 	const [ email, setEmail ] = useState('');
 	const [ senha, setSenha ] = useState('');
 	const [ nome, setNome ] = useState('');
@@ -18,9 +20,11 @@ const cadastro = () => {
 				senha
 			});
 
-			if (response.status = 200){
+			if (response.data){
 				await AsyncStorage.setItem('@Lista:token', response.data);
 			};
+
+			navigation.navigate('selecaoFamilia');
 
 		} catch(error){
 			console.log(error);
@@ -43,7 +47,9 @@ const cadastro = () => {
 				onChangeText={text => setSenha(text)}
 				value={senha}/>
 
-			<Button>
+			<Button
+				onPress={realizarCadastro}
+			>
 				<ButtonText> Finalizar cadastro </ButtonText>
 			</Button>
 
