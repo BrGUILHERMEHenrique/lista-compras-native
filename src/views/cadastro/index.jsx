@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/stack';
 
 import {Container, Button, ButtonText, Input} from './styles';
 

@@ -31,3 +31,9 @@ export const ButtonText = styled.Text`
   font-size: 18px;
   font-weight: bold;
 `;
+
+export const Label = styled.Text`
+  color: #001;
+  font-size: 18px;
+  font-weight: bold;
+`;
