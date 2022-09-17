@@ -27,23 +27,10 @@ const Home = () => {
     const [ modalVisivel, setModalVisivel ] = useState(false);
     const [ item, setItem ] = useState({});
     const [ showAlert, setShowalert ] = useState(false);
-    const [ token, setToken ] = useState('');
     const calculos = new Calculos(); 
-    var configAxios = {};
 
     const URL_UPDATE = '/item';
 
-    const loadToken = async () => {
-        console.log('antes de carregar');
-        const token = await AsyncStorage.getItem('@Lista:token');
-        console.log('token aqui na parada: ', token);
-        configAxios = {headers:{
-                        'Authorization': token
-                    }};
-        if(token){
-            setToken(token);
-        }
-    }
     const comprar = async(id, comprado, qtd) => {
 
         calculos.somaValor(preco, qtd);
@@ -79,10 +66,7 @@ const Home = () => {
             if(!!familia){
                 setFamilia(familia);
                 const response = await api.get(
-                    URL_PRODUTO + familia.lista.id,
-                    {headers:{
-                        'Authorization': token
-                    }}
+                    URL_PRODUTO + familia.lista.id
                     );
 
                 setItens(response.data);
@@ -105,10 +89,7 @@ const Home = () => {
             comprado: false
         }
         try{
-            console.log('config axios: ', configAxios);
-            const response = await api.post('/item/cadastrar', prod, {headers:{
-                        'Authorization': token
-                    }});
+            const response = await api.post('/item/cadastrar', prod);
             console.log(response.data);
             carregarProdutos();
             setNewQtd(0);
@@ -130,7 +111,7 @@ const Home = () => {
 
     const excluirItem = async (itemId) => {
         try {
-            await api.delete(`/produto/${itemId}`, configAxios);
+            await api.delete(`/produto/${itemId}`);
             carregarProdutos();
         } catch (error) {
             console.log(error.message);    
@@ -157,8 +138,7 @@ const Home = () => {
         }
     }
 
-    useEffect(async () => {
-        await loadToken();
+    useEffect(() => {
         carregarProdutos();
     }, [])
 
