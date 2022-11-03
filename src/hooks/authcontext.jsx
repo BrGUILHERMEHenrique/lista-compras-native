@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
 
     const signIn = useCallback(async ({ email, senha }) => {
         try {
+            console.log('Fazendo requisição');
             const response = await api.post(URL_PADRAO+URL_LOGIN, {
                 email,
                 senha
@@ -58,7 +59,8 @@ const AuthProvider = ({ children }) => {
     const signOut = useCallback(async () => {
         try {
             setData({});
-            await AsyncStorage.removeItem('@Lista:user');    
+            await AsyncStorage.removeItem('@Lista:user');  
+            await AsyncStorage.removeItem('@Lista:token');
         } catch (e) {
             console.log(e.message);
         }

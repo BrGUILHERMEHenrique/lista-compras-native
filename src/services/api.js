@@ -7,7 +7,7 @@ const api = axios.create({
 
 api.interceptors.request.use(async (req) => {
   const token = await AsyncStorage.getItem('@Lista:token');
-
+  console.warn('token', token);
   if(token){
     req.headers = {
       'Authorization': token

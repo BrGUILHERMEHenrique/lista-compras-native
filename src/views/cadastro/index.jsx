@@ -21,7 +21,7 @@ const cadastro = ({ navigation }) => {
 			});
 
 			if (response.data){
-				await AsyncStorage.setItem('@Lista:token', response.data);
+				await AsyncStorage.setItem('@Lista:token', 'Bearer ' + response.data);
 			};
 
 			navigation.navigate('selecaoFamilia');

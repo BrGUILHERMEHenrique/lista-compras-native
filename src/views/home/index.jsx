@@ -29,20 +29,20 @@ const Home = () => {
     const [ showAlert, setShowalert ] = useState(false);
     const calculos = new Calculos(); 
 
-    const URL_UPDATE = '/item';
+    const URL_UPDATE = '/item/atualizar';
 
     const comprar = async(id, comprado, qtd) => {
-
         calculos.somaValor(preco, qtd);
         setPreco(calculos.multiplicaValorDoItem(preco, qtd));
 
         try{
-
+            console.log('comprado: ', !comprado);
             const response = await api.patch(
-                    URL_UPDATE + `/${id}`,
+                    URL_UPDATE,
                     {
+                        id: id,
                         comprado:  !comprado,
-                        preço: preco
+                        preco: preco
                     }
                 );
 
@@ -68,7 +68,8 @@ const Home = () => {
                 const response = await api.get(
                     URL_PRODUTO + familia.lista.id
                     );
-
+                
+                console.log(response.data);
                 setItens(response.data);
             }
         }catch(e){
@@ -156,7 +157,7 @@ const Home = () => {
             <Text>Adicionar preço do produto</Text>
                 <InputPreco
                     value={preco}
-                    onChangeText={text => setPreco(Number(text))} 
+                    onChangeText={text => setPreco(text)} 
                     keyboardType='numeric'
                     placeholder='Preço'
                 />

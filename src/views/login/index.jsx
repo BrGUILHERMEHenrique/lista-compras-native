@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { Link } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useAuth } from '../../hooks/authcontext';
 
@@ -12,8 +13,9 @@ const login = () => {
     const [ senha, setSenha ] = useState('');
 
     const login = async () => {
+        await AsyncStorage.removeItem('@Lista:token');
         if(!email || !senha) return;
-
+        console.log('Fazeno login');
         try{
             await signIn({
                 email: email,
